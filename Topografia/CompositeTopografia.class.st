@@ -43,29 +43,33 @@ Internal Representation and Key Implementation Points.
 Class {
 	#name : #CompositeTopografia,
 	#superclass : #Topografia,
-	#instVars : [
-		'topografias'
-	],
 	#category : #Topografia
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 CompositeTopografia >> desperdicio [
-|total|
+		|promedio|
+		
+		promedio:= self miDesperdicio.
+		(promedio < 0.5 ) 
+			ifTrue:[ ^ promedio * 1.03] 
+			ifFalse:[^promedio].
+]
 
-	total := ((topografias sumNumbers: [ :topografia | topografia proporcionTierra   ]) / topografias size ).
-	(total equals: 0.5 ) ifTrue:[^ total * 1.03] ifFalse:[^total]
-	
+{ #category : #accessing }
+CompositeTopografia >> distribucion: unaTopografia [
+	|idx|
+	idx:= 0.
+	(self topografias size = unaTopografia topografias size)
+	ifTrue: [  ^ topografias allSatisfy: [ :top | 
+			idx:= idx + 1.
+			top distribucion: (unaTopografia topografias at: idx) ] ]
+	ifFalse: [ ^false ].
 ]
 
 { #category : #'as yet unclassified' }
-CompositeTopografia >> distribucion [
-	^topografias 
-]
-
-{ #category : #initialization }
-CompositeTopografia >> initialize [
-	topografias := OrderedCollection new.
+CompositeTopografia >> miDesperdicio [
+	^(topografias sumNumbers:  [ :topografia | topografia desperdicio]) / 4 
 ]
 
 { #category : #accessing }
@@ -74,13 +78,18 @@ CompositeTopografia >> proporcionAgua [
 ]
 
 { #category : #accessing }
+CompositeTopografia >> proporcionAgua: unaTopografia [ 
+	^ (topografias sumNumbers: [ :topografia | topografia proporcionAgua  ]) / 4 
+]
+
+{ #category : #accessing }
 CompositeTopografia >> proporcionTierra [
 	^ (topografias sumNumbers: [ :topografia | topografia proporcionTierra   ]) / 4 .
 ]
 
 { #category : #accessing }
-CompositeTopografia >> topografias [
-	^ topografias
+CompositeTopografia >> proporcionTierra: unaTopografia [
+	^ self proporcionTierra = unaTopografia proporcionTierra .
 ]
 
 { #category : #accessing }

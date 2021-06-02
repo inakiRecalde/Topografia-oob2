@@ -6,5 +6,10 @@ Class {
 
 { #category : #'as yet unclassified' }
 Feedlot >> desperdicio [
-^0.9
+	^desperdicio 
+]
+
+{ #category : #initialization }
+Feedlot >> initialize [
+	desperdicio := 0.9
 ]

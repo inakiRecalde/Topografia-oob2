@@ -40,7 +40,9 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'proporcionAgua',
-		'proporcionTierra'
+		'proporcionTierra',
+		'topografias',
+		'desperdicio'
 	],
 	#category : #Topografia
 }
@@ -51,17 +53,22 @@ Topografia >> desperdicio [
 ]
 
 { #category : #'as yet unclassified' }
-Topografia >> distribucion [
+Topografia >> distribucion: unaTopografia [ 
 	self subclassResponsibility 
 ]
 
 { #category : #'as yet unclassified' }
 Topografia >> igualA: otraTopografia [
-	(self proporcionAgua = otraTopografia proporcionAgua &
-		self proporcionTierra = otraTopografia proporcionTierra &
-		self distribucion  = otraTopografia distribucion )
+	(( self proporcionAgua: otraTopografia) &
+		(self proporcionTierra: otraTopografia) &
+		(self  distribucion: otraTopografia))
 			ifTrue: [^true] 
 			ifFalse: [^false].
+]
+
+{ #category : #initialization }
+Topografia >> initialize [
+	topografias := OrderedCollection new.
 ]
 
 { #category : #accessing }
@@ -70,6 +77,21 @@ Topografia >> proporcionAgua [
 ]
 
 { #category : #accessing }
+Topografia >> proporcionAgua: unaTopografia [ 
+	self subclassResponsibility 
+]
+
+{ #category : #accessing }
 Topografia >> proporcionTierra [
 	self subclassResponsibility 
+]
+
+{ #category : #accessing }
+Topografia >> proporcionTierra: unaTopografia [ 
+	self subclassResponsibility 
+]
+
+{ #category : #accessing }
+Topografia >> topografias [
+	^ topografias
 ]
