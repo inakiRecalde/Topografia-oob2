@@ -46,6 +46,11 @@ Class {
 	#category : #Topografia
 }
 
+{ #category : #'instance creation' }
+CompositeTopografia class >> new: unaTop1 top2: unaTop2 top3: unaTop3 top4: unaTop4 [
+	^self new top1: unaTop1 top2: unaTop2 top3: unaTop3 top4: unaTop4
+]
+
 { #category : #accessing }
 CompositeTopografia >> desperdicio [
 		|promedio|
@@ -92,8 +97,10 @@ CompositeTopografia >> proporcionTierra: unaTopografia [
 	^ self proporcionTierra = unaTopografia proporcionTierra .
 ]
 
-{ #category : #accessing }
-CompositeTopografia >> topografias: anObject [
-	(topografias size < 4)
-	ifTrue: (topografias add: anObject)
+{ #category : #'as yet unclassified' }
+CompositeTopografia >> top1: unaTop1 top2: unaTop2 top3: unaTop3 top4: unaTop4 [
+	topografias add: unaTop1 .
+	topografias add: unaTop2 .
+	topografias add: unaTop3 .
+	topografias add: unaTop4 .
 ]
