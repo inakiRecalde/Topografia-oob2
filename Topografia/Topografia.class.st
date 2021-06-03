@@ -48,6 +48,11 @@ Class {
 }
 
 { #category : #accessing }
+Topografia >> agregar: unaTopografia [ 
+	topografias add: unaTopografia 
+]
+
+{ #category : #accessing }
 Topografia >> desperdicio [
 	self subclassResponsibility 
 ]
