@@ -43,6 +43,9 @@ Internal Representation and Key Implementation Points.
 Class {
 	#name : #CompositeTopografia,
 	#superclass : #Topografia,
+	#instVars : [
+		'topografias'
+	],
 	#category : #Topografia
 }
 
@@ -65,11 +68,19 @@ CompositeTopografia >> desperdicio [
 CompositeTopografia >> distribucion: unaTopografia [
 	|idx|
 	idx:= 0.
-	(self topografias size = unaTopografia topografias size)
-	ifTrue: [  ^ topografias allSatisfy: [ :top | 
-			idx:= idx + 1.
-			top distribucion: (unaTopografia topografias at: idx) ] ]
+	(unaTopografia class = self class)
+	ifTrue:[
+		(self topografias size = unaTopografia topografias size)
+		ifTrue: [  ^ topografias allSatisfy: [ :top | 
+				idx:= idx + 1.
+				top distribucion: (unaTopografia topografias at: idx) ] ]
+		ifFalse: [ ^false ]. ]
 	ifFalse: [ ^false ].
+]
+
+{ #category : #initialization }
+CompositeTopografia >> initialize [
+	topografias := OrderedCollection new.
 ]
 
 { #category : #'as yet unclassified' }
@@ -84,7 +95,7 @@ CompositeTopografia >> proporcionAgua [
 
 { #category : #accessing }
 CompositeTopografia >> proporcionAgua: unaTopografia [ 
-	^ (topografias sumNumbers: [ :topografia | topografia proporcionAgua  ]) / 4 
+	^ self proporcionAgua = unaTopografia proporcionAgua .
 ]
 
 { #category : #accessing }
@@ -103,4 +114,9 @@ CompositeTopografia >> top1: unaTop1 top2: unaTop2 top3: unaTop3 top4: unaTop4 [
 	topografias add: unaTop2 .
 	topografias add: unaTop3 .
 	topografias add: unaTop4 .
+]
+
+{ #category : #accessing }
+CompositeTopografia >> topografias [
+	^ topografias
 ]

@@ -36,48 +36,13 @@ Internal Representation and Key Implementation Points.
 "
 Class {
 	#name : #Agua,
-	#superclass : #Topografia,
+	#superclass : #Atomic,
 	#category : #Topografia
 }
-
-{ #category : #'as yet unclassified' }
-Agua >> desperdicio [
-	^ desperdicio .
-]
-
-{ #category : #'as yet unclassified' }
-Agua >> distribucion: unaTopografia [ 
-	^ self class = unaTopografia class.
-]
 
 { #category : #initialization }
 Agua >> initialize [
 	proporcionAgua :=1.
 	proporcionTierra := 0.
 	desperdicio := 0.15.
-]
-
-{ #category : #'as yet unclassified' }
-Agua >> miDesperdicio [
-	^ desperdicio .
-]
-
-{ #category : #accessing }
-Agua >> proporcionAgua [
-	^ proporcionAgua .
-]
-
-{ #category : #accessing }
-Agua >> proporcionAgua: unaTopografia [
-	^proporcionAgua = unaTopografia proporcionAgua .
-]
-
-{ #category : #accessing }
-Agua >> proporcionTierra [
-	^ proporcionTierra .
-]
-
-{ #category : #accessing }
-Agua >> proporcionTierra: unaTopografia [
-	^ proporcionTierra = unaTopografia proporcionAgua .
 ]

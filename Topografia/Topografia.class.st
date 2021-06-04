@@ -41,7 +41,6 @@ Class {
 	#instVars : [
 		'proporcionAgua',
 		'proporcionTierra',
-		'topografias',
 		'desperdicio'
 	],
 	#category : #Topografia
@@ -66,11 +65,6 @@ Topografia >> igualA: otraTopografia [
 			ifFalse: [^false].
 ]
 
-{ #category : #initialization }
-Topografia >> initialize [
-	topografias := OrderedCollection new.
-]
-
 { #category : #accessing }
 Topografia >> proporcionAgua [
 	self subclassResponsibility 
@@ -89,9 +83,4 @@ Topografia >> proporcionTierra [
 { #category : #accessing }
 Topografia >> proporcionTierra: unaTopografia [ 
 	self subclassResponsibility 
-]
-
-{ #category : #accessing }
-Topografia >> topografias [
-	^ topografias
 ]
