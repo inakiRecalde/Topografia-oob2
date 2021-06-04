@@ -66,14 +66,14 @@ CompositeTopografia >> desperdicio [
 
 { #category : #accessing }
 CompositeTopografia >> distribucion: unaTopografia [
-	|idx|
-	idx:= 0.
+	|id|
+	id:= 0.
 	(unaTopografia class = self class)
 	ifTrue:[
 		(self topografias size = unaTopografia topografias size)
 		ifTrue: [  ^ topografias allSatisfy: [ :top | 
-				idx:= idx + 1.
-				top distribucion: (unaTopografia topografias at: idx) ] ]
+				id:= id + 1.
+				top distribucion: (unaTopografia topografias at: id) ] ]
 		ifFalse: [ ^false ]. ]
 	ifFalse: [ ^false ].
 ]

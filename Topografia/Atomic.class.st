@@ -4,7 +4,7 @@ Class {
 	#category : #Topografia
 }
 
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 Atomic >> desperdicio [
 	^ desperdicio .
 ]
@@ -12,11 +12,6 @@ Atomic >> desperdicio [
 { #category : #accessing }
 Atomic >> distribucion: unaTopografia [ 
 	^ self class = unaTopografia class.
-]
-
-{ #category : #'as yet unclassified' }
-Atomic >> miDesperdicio [
-	^ desperdicio .
 ]
 
 { #category : #accessing }
