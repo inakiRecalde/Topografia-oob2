@@ -4,14 +4,14 @@ Class {
 	#category : #Topografia
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 Atomic >> desperdicio [
-	^ desperdicio 
+	^ desperdicio .
 ]
 
-{ #category : #'as yet unclassified' }
-Atomic >> distribucion: unaTopografia [
-	^self class = unaTopografia class .
+{ #category : #accessing }
+Atomic >> distribucion: unaTopografia [ 
+	^ self class = unaTopografia class.
 ]
 
 { #category : #'as yet unclassified' }
@@ -36,5 +36,5 @@ Atomic >> proporcionTierra [
 
 { #category : #accessing }
 Atomic >> proporcionTierra: unaTopografia [
-	^ proporcionTierra = unaTopografia proporcionAgua .
+	^ proporcionTierra = unaTopografia proporcionTierra .
 ]
